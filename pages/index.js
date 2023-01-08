@@ -78,7 +78,7 @@ export default function Home() {
         {context.state.switchState === "rockets" && session && (
           <>
             <SearchFilterComponentRockets />
-            {context.state?.availableRockets?.length > 0 ? (
+            {context.state?.availableRockets?.length > 0 && session ? (
               <CardGridRockets />
             ) : (
               <div className={styles.card_grid__empty_state}>
@@ -89,10 +89,11 @@ export default function Home() {
             )}
           </>
         )}
-        {context.state.switchState === "capsules" && session && (
+        {context.state.switchState === "capsules" && (
           <>
             <SearchFilterComponentCapsules />
-            {context.state?.availableCapsules?.capsules?.length > 0 ? (
+            {context.state?.availableCapsules?.capsules?.length > 0 &&
+            session ? (
               <CardGridCapsules />
             ) : (
               <div className={styles.card_grid__empty_state}>
