@@ -106,85 +106,86 @@ function SearchFilterComponentRockets() {
       {context.state.switchState === "capsules" && (
         <CapsulesSearchDescription styles={styles} />
       )}
-      {!session && (
+      {!session ? (
         <button
           className={styles.search_signin}
           onClick={() => signIn("github")}
         >
           Sign in with Github to continue
         </button>
-      )}
-      <div className={styles.control_wrapper}>
-        <input
-          value={searchTerm}
-          onChange={(ev) => setSearchTerm(ev.target.value)}
-          type="text"
-          placeholder="Search by name"
-          className={styles.control_input}
-        />
-        <div className={styles.control_switch}>
-          <Switch
-            defaultChecked
-            checked={includeInactive}
-            onChange={(ev, checked) => setIncludeInactive(checked)}
+      ) : (
+        <div className={styles.control_wrapper}>
+          <input
+            value={searchTerm}
+            onChange={(ev) => setSearchTerm(ev.target.value)}
+            type="text"
+            placeholder="Search by name"
+            className={styles.control_input}
           />
-          <span>Include inactive</span>
-        </div>
-        <button
-          className={styles.control_filter}
-          onClick={handleClickHeightFilter}
-        >
-          {rocketHeightFilter || "Filter on height"}
-        </button>
-        <button
-          className={styles.control_filter}
-          onClick={handleClickSortRocket}
-        >
-          {rocketSorting || "Sort by"}
-        </button>
-        <button className={styles.control_clear} onClick={clearAllFilters}>
-          Clear filters
-        </button>
+          <div className={styles.control_switch}>
+            <Switch
+              defaultChecked
+              checked={includeInactive}
+              onChange={(ev, checked) => setIncludeInactive(checked)}
+            />
+            <span>Include inactive</span>
+          </div>
+          <button
+            className={styles.control_filter}
+            onClick={handleClickHeightFilter}
+          >
+            {rocketHeightFilter || "Filter on height"}
+          </button>
+          <button
+            className={styles.control_filter}
+            onClick={handleClickSortRocket}
+          >
+            {rocketSorting || "Sort by"}
+          </button>
+          <button className={styles.control_clear} onClick={clearAllFilters}>
+            Clear filters
+          </button>
 
-        <button className={styles.control_search} onClick={handleSearch}>
-          Search
-        </button>
-        <Menu
-          id="basic-menu"
-          anchorEl={anchorElHeightFilter}
-          open={openHeightFilter}
-          onClose={() => handleCloseHeightFilter(null)}
-          MenuListProps={{
-            "aria-labelledby": "basic-button1",
-          }}
-        >
-          <MenuItem onClick={() => handleCloseHeightFilter("Less than 50m")}>
-            Less than 50m
-          </MenuItem>
-          <MenuItem onClick={() => handleCloseHeightFilter("50m to 100m")}>
-            50m to 100m
-          </MenuItem>
-          <MenuItem onClick={() => handleCloseHeightFilter("more than 100m")}>
-            more than 100m
-          </MenuItem>
-        </Menu>
-        <Menu
-          id="basic-menu"
-          anchorEl={anchorElSortRocket}
-          open={openSortRocket}
-          onClose={() => handleCloseSortRocket(null)}
-          MenuListProps={{
-            "aria-labelledby": "basic-button2",
-          }}
-        >
-          <MenuItem onClick={() => handleCloseSortRocket("First launch")}>
-            First launch
-          </MenuItem>
-          <MenuItem onClick={() => handleCloseSortRocket("Cost per launch")}>
-            Cost per launch
-          </MenuItem>
-        </Menu>
-      </div>
+          <button className={styles.control_search} onClick={handleSearch}>
+            Search
+          </button>
+          <Menu
+            id="basic-menu"
+            anchorEl={anchorElHeightFilter}
+            open={openHeightFilter}
+            onClose={() => handleCloseHeightFilter(null)}
+            MenuListProps={{
+              "aria-labelledby": "basic-button1",
+            }}
+          >
+            <MenuItem onClick={() => handleCloseHeightFilter("Less than 50m")}>
+              Less than 50m
+            </MenuItem>
+            <MenuItem onClick={() => handleCloseHeightFilter("50m to 100m")}>
+              50m to 100m
+            </MenuItem>
+            <MenuItem onClick={() => handleCloseHeightFilter("more than 100m")}>
+              more than 100m
+            </MenuItem>
+          </Menu>
+          <Menu
+            id="basic-menu"
+            anchorEl={anchorElSortRocket}
+            open={openSortRocket}
+            onClose={() => handleCloseSortRocket(null)}
+            MenuListProps={{
+              "aria-labelledby": "basic-button2",
+            }}
+          >
+            <MenuItem onClick={() => handleCloseSortRocket("First launch")}>
+              First launch
+            </MenuItem>
+            <MenuItem onClick={() => handleCloseSortRocket("Cost per launch")}>
+              Cost per launch
+            </MenuItem>
+          </Menu>
+        </div>
+      )}
     </section>
   );
 }
