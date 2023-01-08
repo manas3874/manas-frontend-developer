@@ -1,3 +1,4 @@
+import { useSession } from "next-auth/react";
 import Head from "next/head";
 import { useContext } from "react";
 import CanvasFalconHeavy from "../src/components/CanvasFalconHeavy";
@@ -21,6 +22,8 @@ export default function Home() {
   const handleSwitch = (newState) => {
     context.contextSetter({ switchState: newState });
   };
+  const { data: session } = useSession();
+
   return (
     <>
       <Head>
@@ -72,7 +75,7 @@ export default function Home() {
           <CapsulesDescription styles={styles} />
         )}
 
-        {context.state.switchState === "rockets" && (
+        {context.state.switchState === "rockets" && session && (
           <>
             <SearchFilterComponentRockets />
             {context.state?.availableRockets?.length > 0 ? (
@@ -86,7 +89,7 @@ export default function Home() {
             )}
           </>
         )}
-        {context.state.switchState === "capsules" && (
+        {context.state.switchState === "capsules" && session && (
           <>
             <SearchFilterComponentCapsules />
             {context.state?.availableCapsules?.capsules?.length > 0 ? (
