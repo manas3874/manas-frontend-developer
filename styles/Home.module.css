@@ -1,278 +1,228 @@
-.main {
+/* ! Banner section ************************************************ */
+.banner_wrapper {
+  width: 100vw;
+  height: 70vh;
+  background-color: grey;
+  position: relative;
+  padding: 0 4rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
-  padding: 6rem;
-  min-height: 100vh;
+  justify-content: center;
+  background: url("../public/images/astronauts_on_mars.webp") center center/cover;
 }
 
-.description {
-  display: inherit;
-  justify-content: inherit;
-  align-items: inherit;
-  font-size: 0.85rem;
-  max-width: var(--max-width);
+.banner_wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.banner_title {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  font-size: 96px;
+  color: #fff;
+  text-align: center;
   z-index: 2;
-  font-family: var(--font-mono);
 }
 
-.description a {
+.banner_title__strike {
+  text-decoration: line-through;
+}
+
+.banner_title__main {
+  -webkit-animation: glow 2s ease-in-out infinite alternate;
+  -moz-animation: glow 2s ease-in-out infinite alternate;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+.banner_subtitle {
+  font-size: 28px;
+  font-family: 'Orbitron', sans-serif;
+  color: #ffffff;
+  font-weight: 500;
+  z-index: 2;
+
+
+}
+
+/* ! Description section ************************************************ */
+.description {
+  max-width: 1200px;
+  margin: 0 auto 0 auto;
+  padding: 2rem 0;
+}
+
+.description_title {
+  text-align: center;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 500;
+  font-size: 28px;
+  margin-bottom: 2rem;
+}
+
+.description_content {
+  color: #cccccc;
+  text-align: justify;
+  font-weight: 24px;
+  font-family: 'Poppins', sans-serif;
+  line-height: 30px;
+}
+
+.description_content span {
+  font-weight: 900;
+  color: #ffffff;
+}
+
+.description_content a {
+  color: #e67300;
+  text-decoration: underline;
+}
+
+.logos {
   display: flex;
-  justify-content: center;
+  /* width: 400px; */
   align-items: center;
-  gap: 0.5rem;
+  margin: auto;
+  justify-content: center;
+  margin-bottom: 2rem;
 }
 
-.description p {
-  position: relative;
-  margin: 0;
-  padding: 1rem;
-  background-color: rgba(var(--callout-rgb), 0.5);
-  border: 1px solid rgba(var(--callout-border-rgb), 0.3);
-  border-radius: var(--border-radius);
+.logos svg {
+  margin: 0 1rem;
 }
 
-.code {
-  font-weight: 700;
-  font-family: var(--font-mono);
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(25%, auto));
-  width: var(--max-width);
-  max-width: 100%;
-}
-
-.card {
-  padding: 1rem 1.2rem;
-  border-radius: var(--border-radius);
-  background: rgba(var(--card-rgb), 0);
-  border: 1px solid rgba(var(--card-border-rgb), 0);
-  transition: background 200ms, border 200ms;
-}
-
-.card span {
-  display: inline-block;
-  transition: transform 200ms;
-}
-
-.card h2 {
-  font-weight: 600;
-  margin-bottom: 0.7rem;
-}
-
-.card p {
-  margin: 0;
-  opacity: 0.6;
-  font-size: 0.9rem;
-  line-height: 1.5;
-  max-width: 30ch;
-}
-
-.center {
+/* ! Switch module ************************************************ */
+.switch {
+  margin: auto;
+  width: 400px;
+  border: 1px solid #e67300;
+  border-radius: 4px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  position: relative;
-  padding: 4rem 0;
+  padding: 4px;
+  margin-top: 2rem;
+  box-shadow: 0px 0px 10px rgba(230, 115, 0, 0.6), inset 0px 0px 20px rgba(0, 0, 0, 0.4);
+
 }
 
-.center::before {
-  background: var(--secondary-glow);
-  border-radius: 50%;
-  width: 480px;
-  height: 360px;
-  margin-left: -400px;
+.switch span {
+  font-family: 'Orbitron', sans-serif;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  font-size: 20px;
+  padding: 5px 0;
+  cursor: pointer;
 }
 
-.center::after {
-  background: var(--primary-glow);
-  width: 240px;
-  height: 180px;
-  z-index: -1;
+.switch .selected {
+  background-color: #ccc;
+  color: #333;
 }
 
-.center::before,
-.center::after {
-  content: '';
-  left: 50%;
-  position: absolute;
-  filter: blur(45px);
-  transform: translateZ(0);
+.card_grid__empty_state {
+  margin: auto;
+  width: 400px;
+  border: 0.5px solid #e67300;
+  border-radius: 4px;
+  padding: 1rem 2rem;
+  box-shadow: 0px 0px 10px rgba(230, 115, 0, 0.6), inset 0px 0px 20px rgba(0, 0, 0, 0.4);
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
 }
 
-.logo,
-.thirteen {
-  position: relative;
+/* ! Footer section ************************************************ */
+.footer {
+  /* width: 100%; */
+  margin: 2rem;
+  min-height: 30vh;
+  border: 1px solid #e67300;
+  box-shadow: 0px 0px 10px rgba(230, 115, 0, 0.6), inset 0px 0px 20px rgba(0, 0, 0, 0.4);
+
+  border-radius: 4px;
+  padding: 2rem;
 }
 
-.thirteen {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 75px;
-  height: 75px;
-  padding: 25px 10px;
-  margin-left: 16px;
-  transform: translateZ(0);
-  border-radius: var(--border-radius);
-  overflow: hidden;
-  box-shadow: 0px 2px 8px -1px #0000001a;
-}
-
-.thirteen::before,
-.thirteen::after {
-  content: '';
-  position: absolute;
-  z-index: -1;
-}
-
-/* Conic Gradient Animation */
-.thirteen::before {
-  animation: 6s rotate linear infinite;
-  width: 200%;
-  height: 200%;
-  background: var(--tile-border);
-}
-
-/* Inner Square */
-.thirteen::after {
-  inset: 0;
-  padding: 1px;
-  border-radius: var(--border-radius);
-  background: linear-gradient(
-    to bottom right,
-    rgba(var(--tile-start-rgb), 1),
-    rgba(var(--tile-end-rgb), 1)
-  );
-  background-clip: content-box;
-}
-
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  .card:hover {
-    background: rgba(var(--card-rgb), 0.1);
-    border: 1px solid rgba(var(--card-border-rgb), 0.15);
+/* ! Animations ************************************************ */
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #e67300, 0 0 20px #e67300, 0 0 25px #e67300, 0 0 30px #e67300, 0 0 35px #e67300;
   }
 
-  .card:hover span {
-    transform: translateX(4px);
+  to {
+    text-shadow: 0 0 10px #fff, 0 0 15px #ffea4d, 0 0 20px #ffea4d, 0 0 25px #ffea4d, 0 0 30px #ffea4d, 0 0 35px #ffea4d, 0 0 40px #ffea4d;
   }
 }
 
-@media (prefers-reduced-motion) {
-  .thirteen::before {
-    animation: none;
+/* ! Media queries */
+@media screen and (max-width:1200px) {
+  .banner_title {
+    font-size: 48px;
   }
 
-  .card:hover span {
-    transform: none;
-  }
-}
-
-/* Mobile */
-@media (max-width: 700px) {
-  .content {
-    padding: 4rem;
-  }
-
-  .grid {
-    grid-template-columns: 1fr;
-    margin-bottom: 120px;
-    max-width: 320px;
+  .banner_subtitle {
+    margin-top: 2rem;
+    font-size: 18px;
     text-align: center;
   }
 
-  .card {
-    padding: 1rem 2.5rem;
-  }
-
-  .card h2 {
-    margin-bottom: 0.5rem;
-  }
-
-  .center {
-    padding: 8rem 0 6rem;
-  }
-
-  .center::before {
-    transform: none;
-    height: 300px;
-  }
-
   .description {
-    font-size: 0.8rem;
+    padding: 2rem 1rem;
+  }
+}
+
+@media screen and (max-width:500px) {
+  .banner_wrapper {
+    background: url("../public/images/astronauts_on_mars_2.webp") center center/cover;
+    height: 100vh;
   }
 
-  .description a {
+  .banner_title {
+    font-size: 28px;
+  }
+
+  .banner_subtitle {
+    margin-top: 2rem;
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .switch {
+    width: 280px;
+
+  }
+
+  .switch span {
+    font-size: 16px;
+  }
+
+  .description_title {
+    font-size: 20px;
+    padding: 0 1rem;
+  }
+
+  .description_content {
+    font-size: 16px;
+  }
+
+  .card_grid__empty_state {
+    width: 90vw;
+    font-size: 16px;
+  }
+
+  .footer {
+    margin: 2rem auto;
+    width: 90vw;
     padding: 1rem;
-  }
-
-  .description p,
-  .description div {
-    display: flex;
-    justify-content: center;
-    position: fixed;
-    width: 100%;
-  }
-
-  .description p {
-    align-items: center;
-    inset: 0 0 auto;
-    padding: 2rem 1rem 1.4rem;
-    border-radius: 0;
-    border: none;
-    border-bottom: 1px solid rgba(var(--callout-border-rgb), 0.25);
-    background: linear-gradient(
-      to bottom,
-      rgba(var(--background-start-rgb), 1),
-      rgba(var(--callout-rgb), 0.5)
-    );
-    background-clip: padding-box;
-    backdrop-filter: blur(24px);
-  }
-
-  .description div {
-    align-items: flex-end;
-    pointer-events: none;
-    inset: auto 0 0;
-    padding: 2rem;
-    height: 200px;
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      rgb(var(--background-end-rgb)) 40%
-    );
-    z-index: 1;
-  }
-}
-
-/* Tablet and Smaller Desktop */
-@media (min-width: 701px) and (max-width: 1120px) {
-  .grid {
-    grid-template-columns: repeat(2, 50%);
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .vercelLogo {
-    filter: invert(1);
-  }
-
-  .logo,
-  .thirteen img {
-    filter: invert(1) drop-shadow(0 0 0.3rem #ffffff70);
-  }
-}
-
-@keyframes rotate {
-  from {
-    transform: rotate(360deg);
-  }
-  to {
-    transform: rotate(0deg);
   }
 }
