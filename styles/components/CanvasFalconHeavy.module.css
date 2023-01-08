@@ -1,0 +1,27 @@
+.wrapper {
+    height: 70vh !important;
+    width: 500px !important;
+    z-index: 1;
+    position: absolute !important;
+    right: 16rem !important;
+    top: -2rem;
+}
+
+@media screen and (max-width:1600px) {
+    .wrapper {
+        right: 12rem !important;
+    }
+}
+
+@media screen and (max-width:1600px) {
+    .wrapper {
+        right: 6rem !important;
+    }
+}
+
+@media screen and (max-width:1200px) {
+    .wrapper {
+        right: 50% !important;
+        transform: translateX(50%);
+    }
+}
