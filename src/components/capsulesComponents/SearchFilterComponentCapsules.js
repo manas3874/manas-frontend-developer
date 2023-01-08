@@ -1,42 +1,52 @@
 import React, { useContext, useEffect, useState } from "react";
-import { SpaceContext } from "../../pages/_app";
-import styles from "../../styles/components/SearchFilterComponent.module.css";
+import { SpaceContext } from "../../../pages/_app";
+import styles from "../../../styles/components/SearchFilterComponent.module.css";
 import {
   CapsulesSearchDescription,
   RocketsSearchDescription,
-} from "./ContentComponents";
+} from "../ContentComponents";
 import { useSession, signIn, signOut } from "next-auth/react";
 import axios from "axios";
-import { FormControlLabel, Menu, MenuItem, Switch } from "@mui/material";
+import { Menu, MenuItem, Switch } from "@mui/material";
 function SearchFilterComponentCapsules() {
-  // ! Contexts and hooks initialisation
+  // ! Contexts and hooks initialisation *******************************************************
   const context = useContext(SpaceContext);
   const { data: session } = useSession();
-  // ! Local states
+  // ! Local states *******************************************************
   const [anchorElTypeFilter, setAnchorElTypeFilter] = useState(null);
   const [anchorElSortCapsule, setAnchorElSortCapsule] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [capsuleTypeFilter, setCapsuleTypeFilter] = useState(null);
   const [includeInactive, setIncludeInactive] = useState(true);
   const [capsuleSorting, setCapsuleSorting] = useState(null);
-
-  const openTypeFilter = Boolean(anchorElTypeFilter);
-  const openSortCapsule = Boolean(anchorElSortCapsule);
-  // ! Effects
+  // ! Variables *******************************************************
+  let openTypeFilter = Boolean(anchorElTypeFilter);
+  let openSortCapsule = Boolean(anchorElSortCapsule);
+  // ! Effects *******************************************************
   useEffect(() => {
+    // ! Initial fetch of the data
     if (session) {
+      let defaultCapsulesFilterData = {
+        searchTerm,
+        capsuleTypeFilter,
+        includeInactive,
+        capsuleSorting,
+      };
       axios
-        .post("/api/capsules", { loadMore: false, includeInactive })
+        .post("/api/capsules", {
+          loadMore: false,
+          ...defaultCapsulesFilterData,
+        })
         .then((res) => {
-          console.log("res capsules", res.data);
           context.contextSetter({
             availableCapsules: res.data,
+            capsulesFilterData: defaultCapsulesFilterData,
           });
         })
         .catch((err) => console.log("err", err));
     }
   }, [session, context.state.switchState]);
-  // ! Local helpers
+  // ! Local helpers *******************************************************
   const handleClickTypeFilter = (event) => {
     setAnchorElTypeFilter(event.currentTarget);
   };
@@ -76,7 +86,6 @@ function SearchFilterComponentCapsules() {
     axios
       .post("/api/capsules", capsulesFilterData)
       .then((res) => {
-        console.log("res capsules", res.data);
         context.contextSetter({
           availableCapsules: res.data,
           capsulesFilterData,

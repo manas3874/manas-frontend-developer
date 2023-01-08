@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { SpaceContext } from "../../pages/_app";
-import styles from "../../styles/components/CardGrid.module.css";
+import { SpaceContext } from "../../../pages/_app";
+import styles from "../../../styles/components/CardGrid.module.css";
 import RocketDetailsModal from "./RocketDetailsModal";
 function SingleCard({ singleRocket, handleOpen, context }) {
   return (
@@ -47,23 +47,25 @@ function CardGridRockets() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   return (
-    <div className={styles.wrapper}>
-      {context.state.availableRockets?.map((singleRocket) => {
-        return (
-          <SingleCard
-            key={singleRocket.rocket_id}
-            singleRocket={singleRocket}
-            handleOpen={handleOpen}
-            context={context}
-          />
-        );
-      })}
+    <>
+      <div className={styles.wrapper}>
+        {context.state.availableRockets?.map((singleRocket) => {
+          return (
+            <SingleCard
+              key={singleRocket.rocket_id}
+              singleRocket={singleRocket}
+              handleOpen={handleOpen}
+              context={context}
+            />
+          );
+        })}
+      </div>
       <RocketDetailsModal
         open={open}
         handleClose={handleClose}
         rocketDetails={context.state.selectedRocketDetails}
       />
-    </div>
+    </>
   );
 }
 

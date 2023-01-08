@@ -3,7 +3,6 @@ import { getSession } from "next-auth/react";
 
 export default async (req, res) => {
   const session = await getSession({ req });
-  console.log(req.body);
   const BODY = req.body;
   // ! Compute stuff only if user is logged in
   if (session) {

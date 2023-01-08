@@ -4,26 +4,21 @@ import React from "react";
 import styles from "../../styles/components/CanvasFalconHeavy.module.css";
 import { Model } from "./Model";
 function CanvasFalconHeavy() {
+  // ! This is the threejs implementation for showing the model of a falcon heavy on the banner
   return (
     <Canvas className={styles.wrapper}>
       <mesh rotation={[0, 90, 0]}>
         <ambientLight intensity={3} color="#ffffff" />
         <directionalLight
           position={[-2, 5, 2]}
-          intensity={1.5}
+          intensity={2.5}
           color="#ffffed"
         />
-        {/* <directionalLight
-          position={[-2, 5, 2]}
-          intensity={1.5}
-          color="#ffffed"
-        /> */}
         <directionalLight
           position={[2, 5, -2]}
           intensity={1.5}
-          color="#99edee"
+          color="#EF8317"
         />
-        {/* <boxBufferGeometry attach="geometry" args={[3, 3, 3]} /> */}
         <Model />
         <meshLambertMaterial attach="material" color="#ffffff" />
         <OrbitControls
@@ -33,7 +28,6 @@ function CanvasFalconHeavy() {
           autoRotateSpeed={5}
           minPolarAngle={Math.PI / 2}
           maxPolarAngle={Math.PI / 2}
-          //   rotation={[0, 0, 0]}
         />
       </mesh>
     </Canvas>

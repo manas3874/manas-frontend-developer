@@ -1,12 +1,13 @@
 import React from "react";
 import Modal from "@mui/material/Modal";
 import { Box } from "@mui/material";
-import styles from "../../styles/components/RocketDetailsModal.module.css";
+import styles from "../../../styles/components/RocketDetailsModal.module.css";
 const style = {
   boxShadow: 24,
   p: 4,
 };
 function RocketDetailsModal({ open, handleClose, rocketDetails }) {
+  // ! Modal used is from MUI
   return (
     <Modal
       open={open}
@@ -14,7 +15,7 @@ function RocketDetailsModal({ open, handleClose, rocketDetails }) {
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-      <div className={styles.rockets_modal_wrapper}>
+      <section className={styles.rockets_modal_wrapper}>
         {rocketDetails ? (
           <Box className={styles.rockets_modal} sx={style}>
             <h4 className={styles.rockets_modal__title}>
@@ -109,7 +110,7 @@ function RocketDetailsModal({ open, handleClose, rocketDetails }) {
         ) : (
           <></>
         )}
-      </div>
+      </section>
     </Modal>
   );
 }

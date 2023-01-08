@@ -206,10 +206,7 @@ export function FooterDescription({ styles }) {
         <br />
         <a href="https://openai.com/">Open AI</a> is used for generating
         wonderful content for the website which is again{" "}
-        <span>
-          an open source tool for the world to use.
-          {process.env.NEXT_PUBLIC_GITHUB_ID}
-        </span>
+        <span>an open source tool for the world to use.</span>
       </p>
     </>
   );

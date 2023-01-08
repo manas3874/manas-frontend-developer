@@ -42,7 +42,7 @@
 .separator {
     display: inline-block;
     height: 1px;
-    width: 90%;
+    width: 100%;
     margin: auto;
     background-color: #e67300;
     margin-bottom: 2rem;

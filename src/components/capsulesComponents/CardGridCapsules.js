@@ -1,11 +1,12 @@
 import axios from "axios";
 import moment from "moment/moment";
 import React, { useContext } from "react";
-import { SpaceContext } from "../../pages/_app";
-import styles from "../../styles/components/CardGrid.module.css";
+import { SpaceContext } from "../../../pages/_app";
+import styles from "../../../styles/components/CardGrid.module.css";
 import CapsuleDetailsModal from "./CapsuleDetailsModal";
 
 function SingleCard({ singleCapsule, handleOpen, context }) {
+  // ! Single card for the capsules list
   return (
     <div className={styles.single_card__capsule}>
       <h3 className={styles.single_card__title}>
@@ -64,7 +65,6 @@ function CardGridCapsules() {
         loadMore: true,
       })
       .then((res) => {
-        console.log("res capsules", res.data);
         let newCapsulesData = [
           ...context.state.availableCapsules.capsules,
           ...res.data.capsules,
@@ -77,28 +77,33 @@ function CardGridCapsules() {
       .catch((err) => console.log("err", err));
   };
   return (
-    <div className={styles.wrapper}>
-      {context.state.availableCapsules?.capsules?.map((singleCapsule) => {
-        return (
-          <SingleCard
-            key={singleCapsule.rocket_id}
-            singleCapsule={singleCapsule}
-            handleOpen={handleOpen}
-            context={context}
-          />
-        );
-      })}
-      {context.state.availableCapsules?.hasMore && (
-        <div className={styles.single_card__load_more} onClick={handleLoadMore}>
-          <span>Load more</span>
-        </div>
-      )}
+    <>
+      <div className={styles.wrapper}>
+        {context.state.availableCapsules?.capsules?.map((singleCapsule) => {
+          return (
+            <SingleCard
+              key={singleCapsule.rocket_id}
+              singleCapsule={singleCapsule}
+              handleOpen={handleOpen}
+              context={context}
+            />
+          );
+        })}
+        {context.state.availableCapsules?.hasMore && (
+          <div
+            className={styles.single_card__load_more}
+            onClick={handleLoadMore}
+          >
+            <span>Load more</span>
+          </div>
+        )}
+      </div>
       <CapsuleDetailsModal
         open={open}
         handleClose={handleClose}
         capsuleDetails={context.state.selectedCapsuleDetails}
       />
-    </div>
+    </>
   );
 }
 

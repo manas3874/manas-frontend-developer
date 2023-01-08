@@ -6,6 +6,7 @@ export default function App({
   Component,
   pageProps: { session, ...pageProps },
 }) {
+  // ! State maintained for using through context API
   const [spaceData, setSpaceData] = useState({
     switchState: "rockets",
     availableRockets: null,
@@ -17,6 +18,7 @@ export default function App({
     rocketsFilterData: null,
     capsulesFilterData: null,
   });
+  // ! State setter for the context
   const contextSetter = (stateToUpdate) => {
     setSpaceData({ ...spaceData, ...stateToUpdate });
   };

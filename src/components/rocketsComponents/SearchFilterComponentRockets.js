@@ -1,39 +1,49 @@
 import React, { useContext, useEffect, useState } from "react";
-import { SpaceContext } from "../../pages/_app";
-import styles from "../../styles/components/SearchFilterComponent.module.css";
+import { SpaceContext } from "../../../pages/_app";
+import styles from "../../../styles/components/SearchFilterComponent.module.css";
 import {
   CapsulesSearchDescription,
   RocketsSearchDescription,
-} from "./ContentComponents";
+} from "../ContentComponents";
 import { useSession, signIn, signOut } from "next-auth/react";
 import axios from "axios";
 import { FormControlLabel, Menu, MenuItem, Switch } from "@mui/material";
 function SearchFilterComponentRockets() {
-  // ! Contexts and hooks initialisation
+  // ! Contexts and hooks initialisation *******************************************************
   const context = useContext(SpaceContext);
   const { data: session } = useSession();
-  // ! Local states
+  // ! Local states *******************************************************
   const [anchorElHeightFilter, setAnchorElHeightFilter] = useState(null);
   const [anchorElSortRocket, setAnchorElSortRocket] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [rocketHeightFilter, setRocketHeightFilter] = useState(null);
   const [includeInactive, setIncludeInactive] = useState(true);
   const [rocketSorting, setRocketSorting] = useState(null);
-  const openHeightFilter = Boolean(anchorElHeightFilter);
-  const openSortRocket = Boolean(anchorElSortRocket);
-  // ! Effects
+  // ! Variables *******************************************************
+  let openHeightFilter = Boolean(anchorElHeightFilter);
+  let openSortRocket = Boolean(anchorElSortRocket);
+  // ! Effects *******************************************************
   useEffect(() => {
+    // ! Initial fetch of the data
     if (session) {
+      let defaultRocketsFilterData = {
+        searchTerm,
+        rocketHeightFilter,
+        includeInactive,
+        rocketSorting,
+      };
       axios
-        .post("/api/rockets")
+        .post("/api/rockets", { ...defaultRocketsFilterData })
         .then((res) => {
-          console.log("res rockets", res.data);
-          context.contextSetter({ availableRockets: res.data });
+          context.contextSetter({
+            availableRockets: res.data,
+            rocketsFilterData: defaultRocketsFilterData,
+          });
         })
         .catch((err) => console.log("err", err));
     }
   }, [session, context.state.switchState]);
-  // ! Local helpers
+  // ! Local helpers *******************************************************
   const handleClickHeightFilter = (event) => {
     setAnchorElHeightFilter(event.currentTarget);
   };
@@ -84,7 +94,6 @@ function SearchFilterComponentRockets() {
     axios
       .post("/api/rockets", rocketsFilterData)
       .then((res) => {
-        console.log("res rockets", res.data);
         context.contextSetter({
           availableRockets: res.data,
           rocketsFilterData,

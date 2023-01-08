@@ -2,27 +2,27 @@ import { useSession } from "next-auth/react";
 import Head from "next/head";
 import { useContext } from "react";
 import CanvasFalconHeavy from "../src/components/CanvasFalconHeavy";
-import CardGridCapsules from "../src/components/CardGridCapsules";
-import CardGridRockets from "../src/components/CardGridRockets";
+import CardGridCapsules from "../src/components/capsulesComponents/CardGridCapsules";
+import CardGridRockets from "../src/components/rocketsComponents/CardGridRockets";
 
 import {
   CapsulesDescription,
   FooterDescription,
   RocketsDescription,
 } from "../src/components/ContentComponents";
-import SearchFilterComponentCapsules from "../src/components/SearchFilterComponentCapsules";
-import SearchFilterComponentRockets from "../src/components/SearchFilterComponentRockets";
-import SearchFilterComponent from "../src/components/SearchFilterComponentRockets";
+import SearchFilterComponentCapsules from "../src/components/capsulesComponents/SearchFilterComponentCapsules";
+import SearchFilterComponentRockets from "../src/components/rocketsComponents/SearchFilterComponentRockets";
 import styles from "../styles/Home.module.css";
 import { SpaceContext } from "./_app";
 
 export default function Home() {
+  // ! Hooks initialization *******************************************************
   const context = useContext(SpaceContext);
+  const { data: session } = useSession();
   // ! Local handlers *******************************************************
   const handleSwitch = (newState) => {
     context.contextSetter({ switchState: newState });
   };
-  const { data: session } = useSession();
 
   return (
     <>
