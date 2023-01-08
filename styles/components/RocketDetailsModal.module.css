@@ -1,7 +1,17 @@
+.rockets_modal_wrapper {
+    position: relative;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .rockets_modal {
     width: 800px;
     background-color: #222;
     color: #fff;
+    box-shadow: 0px 0px 25px rgba(230, 115, 0, 0.6), inset 0px 0px 20px rgba(0, 0, 0, 0.4) !important;
+    overflow-y: scroll;
 }
 
 .rockets_modal__title {
@@ -59,6 +69,21 @@
 .mission_table div span {
     font-family: 'Poppins', sans-serif;
     font-size: 18px;
+    text-align: center;
+}
+
+.close_modal {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    height: 2rem;
+    width: 2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #e67300;
+    border-radius: 5rem;
+    cursor: pointer;
 }
 
 /* ! Media queries */
@@ -66,17 +91,20 @@
     .rockets_modal {
         width: 90vw;
         height: 90vh;
-        overflow-y: scroll;
-        box-shadow: 0px 0px 25px rgba(230, 115, 0, 0.6), inset 0px 0px 20px rgba(0, 0, 0, 0.4);
+        box-shadow: 0px 0px 15px rgba(230, 115, 0, 0.6), inset 0px 0px 10px rgba(0, 0, 0, 0.4);
     }
 
     .rockets_modal__title {
         font-size: 20px;
         margin-bottom: 1rem;
-
     }
 
     .rockets_modal__description {
         font-size: 16px;
+    }
+
+    .mission_table div span {
+        font-size: 16px;
+        padding: 0 0.5rem;
     }
 }

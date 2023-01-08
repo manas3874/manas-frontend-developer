@@ -3,10 +3,6 @@ import Modal from "@mui/material/Modal";
 import { Box } from "@mui/material";
 import styles from "../../styles/components/RocketDetailsModal.module.css";
 const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
   boxShadow: 24,
   p: 4,
 };
@@ -17,43 +13,63 @@ function CapsuleDetailsModal({ open, handleClose, capsuleDetails }) {
       onClose={handleClose}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
-      //   classes={[]}
     >
-      {capsuleDetails ? (
-        <Box className={styles.rockets_modal} sx={style}>
-          <h4 className={styles.rockets_modal__title}>
-            {capsuleDetails.capsule_serial}
-          </h4>
-          <p className={styles.rockets_modal__description}>
-            Interesting fact about {capsuleDetails.capsule_serial} capsule -{" "}
-            {capsuleDetails.details}
-          </p>
-          <h4 className={styles.rockets_modal__title}>Mission stats</h4>
-          <div className={styles.mission_table}>
-            <div>
-              <span>Mission name</span>
-              <span>Flight number</span>
+      <div className={styles.rockets_modal_wrapper}>
+        {capsuleDetails ? (
+          <Box className={styles.rockets_modal} sx={style}>
+            <h4 className={styles.rockets_modal__title}>
+              {capsuleDetails.capsule_serial}
+            </h4>
+            <p className={styles.rockets_modal__description}>
+              Interesting fact about {capsuleDetails.capsule_serial} capsule -{" "}
+              {capsuleDetails.details}
+            </p>
+            <h4 className={styles.rockets_modal__title}>Mission stats</h4>
+            <div className={styles.mission_table}>
+              <div>
+                <span>Mission name</span>
+                <span>Flight number</span>
+              </div>
+              {capsuleDetails.missions.map((singleMission) => {
+                return (
+                  <div key={singleMission.name}>
+                    <span>{singleMission.name}</span>
+                    <span>{singleMission.flight}</span>
+                  </div>
+                );
+              })}
             </div>
-            {capsuleDetails.missions.map((singleMission) => {
-              return (
-                <div key={singleMission.name}>
-                  <span>{singleMission.name}</span>
-                  <span>{singleMission.flight}</span>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* <span className={styles.separator}></span> */}
-          {/* <p className={styles.rockets_modal__description}>
-            The {capsuleDetails.rocket_name} rocket costs upto{" "}
-            <span>{capsuleDetails.cost_per_launch} USD</span> to launch and has
-            a <span>success rate of {capsuleDetails.success_rate_pct}%</span>
-          </p> */}
-        </Box>
-      ) : (
-        <></>
-      )}
+            <span className={styles.close_modal} onClick={handleClose}>
+              <svg
+                width="9"
+                height="9"
+                viewBox="0 0 9 9"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <line
+                  x1="0.707107"
+                  y1="1"
+                  x2="7.77817"
+                  y2="8.07107"
+                  stroke="#E67300"
+                  stroke-linecap="round"
+                />
+                <line
+                  x1="1"
+                  y1="8.07024"
+                  x2="8.07107"
+                  y2="0.999169"
+                  stroke="#E67300"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </span>
+          </Box>
+        ) : (
+          <></>
+        )}
+      </div>
     </Modal>
   );
 }
