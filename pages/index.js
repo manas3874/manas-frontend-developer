@@ -75,32 +75,39 @@ export default function Home() {
           <CapsulesDescription styles={styles} />
         )}
 
-        {context.state.switchState === "rockets" && session && (
+        {context.state.switchState === "rockets" && (
           <>
             <SearchFilterComponentRockets />
-            {context.state?.availableRockets?.length > 0 && session ? (
-              <CardGridRockets />
-            ) : (
-              <div className={styles.card_grid__empty_state}>
-                <span>
-                  No Rockets found, please refine your search filters.
-                </span>
-              </div>
+            {session && (
+              <>
+                {context.state?.availableRockets?.length > 0 ? (
+                  <CardGridRockets />
+                ) : (
+                  <div className={styles.card_grid__empty_state}>
+                    <span>
+                      No Rockets found, please refine your search filters.
+                    </span>
+                  </div>
+                )}
+              </>
             )}
           </>
         )}
         {context.state.switchState === "capsules" && (
           <>
             <SearchFilterComponentCapsules />
-            {context.state?.availableCapsules?.capsules?.length > 0 &&
-            session ? (
-              <CardGridCapsules />
-            ) : (
-              <div className={styles.card_grid__empty_state}>
-                <span>
-                  No Capsules found, please refine your search filters.
-                </span>
-              </div>
+            {session && (
+              <>
+                {context.state?.availableCapsules?.capsules?.length > 0 ? (
+                  <CardGridCapsules />
+                ) : (
+                  <div className={styles.card_grid__empty_state}>
+                    <span>
+                      No Capsules found, please refine your search filters.
+                    </span>
+                  </div>
+                )}
+              </>
             )}
           </>
         )}
