@@ -1,0 +1,82 @@
+.rockets_modal {
+    width: 800px;
+    background-color: #222;
+    color: #fff;
+}
+
+.rockets_modal__title {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 500;
+    font-size: 28px;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.rockets_modal__description {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    margin-bottom: 2rem;
+    color: #ccc;
+}
+
+.rockets_modal__description span {
+    color: #fff;
+    font-weight: 900;
+}
+
+.rockets_modal__description a {
+    color: #e67300;
+    text-decoration: underline;
+}
+
+.separator {
+    display: inline-block;
+    height: 1px;
+    width: 90%;
+    margin: auto;
+    background-color: #e67300;
+    margin-bottom: 2rem;
+}
+
+.mission_table {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    margin: auto;
+    border: 1px solid #ccc;
+}
+
+.mission_table div {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    width: 100%;
+    border-bottom: 1px solid #aaa;
+    padding: 0.5rem 0;
+}
+
+.mission_table div span {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+}
+
+/* ! Media queries */
+@media screen and (max-width:1200px) {
+    .rockets_modal {
+        width: 90vw;
+        height: 90vh;
+        overflow-y: scroll;
+        box-shadow: 0px 0px 25px rgba(230, 115, 0, 0.6), inset 0px 0px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .rockets_modal__title {
+        font-size: 20px;
+        margin-bottom: 1rem;
+
+    }
+
+    .rockets_modal__description {
+        font-size: 16px;
+    }
+}
